@@ -49,6 +49,7 @@ public class Example {
 						", name:"+resultSet.getString("name")+", sex:"+
 						resultSet.getString("sex"));
 			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
