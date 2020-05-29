@@ -1,0 +1,16 @@
+INDEX VERSION 1.131+/home/alex/code/java/.metadata/.plugins/org.eclipse.jdt.core
+490216822.index
+1702044905.index
+4034899279.index
+2856485494.index
+2992695221.index
+343251808.index
+2772920109.index
+490220414.index
+2965075007.index
+2456243879.index
+3571133061.index
+708468342.index
+2939244224.index
+3055845218.index
+1150913873.index
