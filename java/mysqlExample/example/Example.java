@@ -148,10 +148,10 @@ public class Example {
 	public static void main(String[] args) {
 		Example example = new Example();
 		example.getConnection();
-		example.add();
+// 		example.add();
 // 		example.add2();
-// 		example.delete();
- 		example.update();
+		example.delete();
+//  	example.update();
 		example.select();
 	}
 }
