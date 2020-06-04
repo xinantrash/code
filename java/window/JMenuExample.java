@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 import java.awt.*;
 
 public class JMenuExample extends JFrame {
-	private JFrame frame;
+	private JFrame   frame;
 	private JMenuBar bar;
-	private JPanel panel;
-	private JLabel label;
+	private JPanel   panel;
+	private JLabel   label;
 
 	public JMenuExample() {
 		frame = new JFrame();
@@ -55,14 +55,14 @@ public class JMenuExample extends JFrame {
 		editMenu.addSeparator();
 		editMenu.add(uItem);
 
-// 		this.add(panel);
+		this.add(panel);
 		this.setBounds(180, 10, 1024, 680);
 		this.setVisible(true);
-		this.add(label);
+// 		this.add(label);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public static void main(String[] args) {
-		new JMenuExample();
+		JMenuExample jMenuExample = new JMenuExample();
 	}
 }
