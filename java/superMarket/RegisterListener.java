@@ -2,7 +2,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.sql.*;
 
-public class HandleListener implements ActionListener {
+public class RegisterListener implements ActionListener {
 	private JTextField accountField;
 	private JPasswordField passwordField;
 	private JTextField telephoneField;

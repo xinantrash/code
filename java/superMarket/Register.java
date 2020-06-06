@@ -11,7 +11,7 @@ public class Register {
 	private JLabel emailLabel;
 	private	JTextField emailField;
 	private JButton button;
-	private HandleListener listener;
+	private RegisterListener listener;
 	
 	public void init(JPanel panel) {
 		panel.setLayout(null);
