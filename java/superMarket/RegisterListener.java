@@ -8,10 +8,10 @@ public class RegisterListener implements ActionListener {
 	private JTextField telephoneField;
 	private JTextField emailField;
 
-	private String JDBC = "com.mysql.cj.jdbc.Driver";
+	private String JDBC     = "com.mysql.cj.jdbc.Driver";
 	private String userName = "root";
 	private String password = "bqlniubi";
-	private String url = "jdbc:mysql://localhost:3306/User"+
+	private String url      = "jdbc:mysql://localhost:3306/User"+
 		"?useSSl=false&&serverTimezone=UTC";
 	private Connection connection;
 	private Statement statement;
@@ -41,11 +41,11 @@ public class RegisterListener implements ActionListener {
 				return;
 			}
 			System.out.println("connection is already!");
-			String account = accountField.getText();
-			String password = String.valueOf(passwordField.getPassword());
+			String account   = accountField.getText();
+			String password  = String.valueOf(passwordField.getPassword());
 			String telephone = telephoneField.getText();
-			String email = emailField.getText();
-			String sql = "insert into user (account,password,telephone,email) values ('"+account+"', '"+password+"', '"+telephone+"', '"+email+"')";
+			String email     = emailField.getText();
+			String sql       = "insert into user (account,password,telephone,email) values ('"+account+"', '"+password+"', '"+telephone+"', '"+email+"')";
 			statement = connection.createStatement();
 			int flag = statement.executeUpdate(sql);
 			if( flag == 1 ) {
