@@ -14,10 +14,10 @@ public class CheckGoods {
 
 	public void insertGoods() {
 		Scanner in = new Scanner(System.in);
-		name   = in.nextLine();
+		name   = in.next();
 		number = in.nextInt();
 		price  = in.nextInt();
-		code   = in.nextLine();
+		code   = in.next();
 
 		try {
 			connection = SQLConnect.getConnection();
@@ -27,11 +27,12 @@ public class CheckGoods {
 			String sql = "insert into goods (price,number,name,code) values ("+price+", "+number+", '"+name+"', '"+code+"')";
 			statement = connection.createStatement();
 			int flag = statement.executeUpdate(sql);
+			if( flag == 1 ) {
+				System.out.println("success!");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 
 	public void checkGoods() {
@@ -41,7 +42,7 @@ public class CheckGoods {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(checkSql);
 			while( resultSet.next() ) {
-				System.out.println("name:"+resultSet.getString(name)+", number:"+resultSet.getInt(number)+", price:"+resultSet.getInt(price)+", code:"+resultSet.getString(code));
+				System.out.println("name:"+resultSet.getString("name")+", number:"+resultSet.getInt("number")+", price:"+resultSet.getInt("price")+", code:"+resultSet.getString("code"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -60,12 +61,13 @@ public class CheckGoods {
 			String name = in.nextLine();
 			String deleteSql = "delete from goods where name='"+name+"';";
 			statement = connection.createStatement();
-			statement.executeUpdate(deleteSql);
+			int flag = statement.executeUpdate(deleteSql);
+			if( flag == 1 ) {
+				System.out.println("success!");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		} 
 	}
 // 
 // 	public void updateGoods() {
