@@ -7,11 +7,10 @@ public class Login {
 	private JLabel passwordLabel;
 	private JPasswordField passwordField;
 	private JButton button;
-	private LoginListener listener;
+	private LoginListener listener = new LoginListener();
 
 	public void init(JPanel panel) {
 		panel.setLayout(null);
-		listener = new LoginListener();
 		accountLabel = new JLabel("account:");
 		accountField = new JTextField(20);
 		passwordLabel = new JLabel("password:");
@@ -45,8 +44,7 @@ public class Login {
 		listener.setJFrame(frame);
 	}
 
-	public static void main(String[] args) {
-		Login login = new Login();
-		login.work();
-	}
+// 	public boolean flag() {
+// 		return listener.getSysFlag();
+// 	}
 }

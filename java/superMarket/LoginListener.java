@@ -15,6 +15,7 @@ public class LoginListener implements ActionListener {
 	private Statement statement;
 	private ResultSet resultSet;
 	private boolean flag;
+	private boolean sysFlag;
 
 	public void setAccountField(JTextField accountField) {
 		this.accountField = accountField;
@@ -27,6 +28,10 @@ public class LoginListener implements ActionListener {
 	public void setJFrame(JFrame jFrame) {
 		this.jFrame = jFrame;
 	}
+
+// 	public boolean getSysFlag() {
+// 		return sysFlag;
+// 	}
 
 	public void actionPerformed(ActionEvent event) {
 
@@ -68,6 +73,7 @@ public class LoginListener implements ActionListener {
 	}
 
 	public void loginSuccess() {
+		sysFlag = true;
 		JFrame frame = new JFrame();
 		frame.setSize(350, 200);
 		JPanel panel = new JPanel();
@@ -81,6 +87,7 @@ public class LoginListener implements ActionListener {
 	}
 
 	public void loginFail() {
+		sysFlag = false;
 		JFrame frame = new JFrame();
 		frame.setSize(350, 200);
 		JPanel panel = new JPanel();

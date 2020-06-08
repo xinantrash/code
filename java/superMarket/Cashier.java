@@ -15,15 +15,16 @@ public class Cashier {
 	private Statement statement;
 	private ResultSet resultSet;
 	private StringBuffer stringBuffer;
-	public int receiveMoney() {
+
+	public double receiveMoney() {
 		try {
 			Scanner in = new Scanner(System.in);
 			stringBuffer = new StringBuffer();
 			connection = SQLConnect.getConnection();
 			statement = connection.createStatement();
 			String selectSql = "select * from goods";
-			resultSet = statement.executeQuery(selectSql);
 			while( true ) {
+				resultSet = statement.executeQuery(selectSql);
 				goodsCode = in.next();
 				if( goodsCode.equals("######") ) {
 					break;
@@ -50,6 +51,9 @@ public class Cashier {
 					else {
 						flag = false;
 					}
+				}
+				if( flag == false ) {
+					System.out.println("Product does not exist!");
 				}
 			}
 		} catch (SQLException e) {
