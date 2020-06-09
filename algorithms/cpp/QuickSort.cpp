@@ -1,3 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void quickSort(vector<int> &nums, int left, int right);
+
+int main(int argc, const char *argv[])
+{
+	vector<int> nums(10);
+	cout << nums.size();
+	for( int i=0; i<nums.size(); ++i ) {
+		cin >> nums[i];
+	}
+	quickSort(nums, 0, nums.size());
+	for( int i=0; i<nums.size(); ++i ) {
+		cout << nums[i] << " ";
+	}
+	return 0;
+}
+
+void quickSort(vector<int> &nums, int left, int right)
+{
+	int l = left;
+	int r = right;
+	int mid = nums[left];
+
+	while( l <= r ) {
+		
+		while( nums[r] > mid && l <= r ) {
+			--r;
+		}
+
+		while( nums[l] < mid && l <= r  ) {
+			++l;
+		}
+
+		if( l <= r ) {
+			swap(nums[l], nums[r]);
+			++l;
+			--r;
+		}
+		if( left < r ) {
+			quickSort(nums, left, r);
+		}
+		if( l < right ) {
+			quickSort(nums, l, right);
+		}
+	}
+}
+
 // #include <bits/stdc++.h>
 // 
 // using namespace std;
@@ -105,52 +155,4 @@
 // 	}
 // }
 
-#include <bits/stdc++.h>
 
-using namespace std;
-
-void quickSort(vector<int> &nums, int left, int right);
-
-int main(int argc, const char *argv[])
-{
-	vector<int> nums(10);
-	cout << nums.size();
-	for( int i=0; i<nums.size(); ++i ) {
-		cin >> nums[i];
-	}
-	quickSort(nums, 0, nums.size());
-	for( int i=0; i<nums.size(); ++i ) {
-		cout << nums[i] << " ";
-	}
-	return 0;
-}
-
-void quickSort(vector<int> &nums, int left, int right)
-{
-	int l = left;
-	int r = right;
-	int mid = nums[left];
-
-	while( l <= r ) {
-		
-		while( nums[r] > mid && l <= r ) {
-			--r;
-		}
-
-		while( nums[l] < mid && l <= r  ) {
-			++l;
-		}
-
-		if( l <= r ) {
-			swap(nums[l], nums[r]);
-			++l;
-			--r;
-		}
-		if( left < r ) {
-			quickSort(nums, left, r);
-		}
-		if( l < right ) {
-			quickSort(nums, l, right);
-		}
-	}
-}
