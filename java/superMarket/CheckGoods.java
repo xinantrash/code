@@ -13,11 +13,13 @@ public class CheckGoods {
 	private ResultSet resultSet;
 
 	public void insertGoods() {
+		System.out.println("name 	number    price    code");
 		Scanner in = new Scanner(System.in);
 		name   = in.next();
 		number = in.nextInt();
 		price  = in.nextInt();
 		code   = in.next();
+		System.out.println("================================================");
 
 		try {
 			connection = SQLConnect.getConnection();

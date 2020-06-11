@@ -1,50 +1,39 @@
-import javax.swing.*;
-import java.awt.*;
+import java.sql.*;
+import java.util.Scanner;
 
 public class Login {
-	private JLabel accountLabel;
-	private JTextField accountField;
-	private JLabel passwordLabel;
-	private JPasswordField passwordField;
-	private JButton button;
-	private LoginListener listener = new LoginListener();
+	private String account;
+	private String password;
 
-	public void init(JPanel panel) {
-		panel.setLayout(null);
-		accountLabel = new JLabel("account:");
-		accountField = new JTextField(20);
-		passwordLabel = new JLabel("password:");
-		passwordField = new JPasswordField(20);
-		button = new JButton("ok!");
-		
-		accountLabel.setBounds(10, 20, 80, 25);
-		accountField.setBounds(100, 20, 165, 25);
-		passwordLabel.setBounds(10, 50, 80, 25);
-		passwordField.setBounds(100, 50, 165, 25);
-		button.setBounds(125, 80, 80, 25);
-		
-		listener.setAccountField(accountField);
-		listener.setPasswordField(passwordField);
-		button.addActionListener(listener);
-
-		panel.add(accountLabel);
-		panel.add(accountField);
-        panel.add(passwordLabel);
-        panel.add(passwordField);
-        panel.add(button);
+	private boolean login() {
+		Scanner in = new Scanner(System.in);
+		account = in.nextLine();
+		password = in.nextLine();
+		if( account.equals("admin") && password.equals("123456") ) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
-	public void work() {
-		JPanel panel = new JPanel();
-		JFrame frame = new JFrame("login");	
-		frame.setSize(350, 150);
-		init(panel);
-		frame.add(panel);
-		frame.setVisible(true);
-		listener.setJFrame(frame);
+	public boolean loginFail() {
+		int nums = 0;
+		for ( int i=1; i<=3; i++ ) {
+			System.out.println("第"+i+"次输入密码, 密码错误3次则自动退出程序");
+			if( this.login() == false ) {
+				nums++;
+			}
+			else {
+				break;
+			}
+		}
+		
+		if( nums == 3 ) {
+			return false;
+		}
+		else {
+			return true;
+		}
 	}
-
-// 	public boolean flag() {
-// 		return listener.getSysFlag();
-// 	}
 }
