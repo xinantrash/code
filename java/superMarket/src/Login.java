@@ -7,7 +7,9 @@ public class Login {
 
 	private boolean login() {
 		Scanner in = new Scanner(System.in);
+		System.out.print(" account:");
 		account = in.nextLine();
+		System.out.print("password:");
 		password = in.nextLine();
 		if( account.equals("admin") && password.equals("123456") ) {
 			return true;

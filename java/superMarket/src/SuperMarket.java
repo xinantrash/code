@@ -14,7 +14,7 @@ public class SuperMarket {
 	public void tip() {
 		System.out.println("================================================");
 		System.out.println("welcome!");
-		System.out.println("plz input the command like check...etc");
+		System.out.println("plz input the command like \"check\"...etc");
 		System.out.println("1.check:查看商品");
 		System.out.println("2.insert:插入商品");
 		System.out.println("3.delete:删除商品");

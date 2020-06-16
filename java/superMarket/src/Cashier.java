@@ -1,6 +1,5 @@
 import java.sql.*;
 import java.util.Scanner;
-import java.util.Vector;
 
 public class Cashier {
 
@@ -26,7 +25,7 @@ public class Cashier {
 			while( true ) {
 				resultSet = statement.executeQuery(selectSql);
 				goodsCode = in.next();
-				if( goodsCode.equals("######") ) {
+				if( goodsCode.equals("#") ) {
 					break;
 				}
 				goodsNumber = in.nextInt();
@@ -39,7 +38,7 @@ public class Cashier {
 							totalNumber += goodsNumber;
 							updateGoods();				
 							stringBuffer.append(resultSet.getString("name")
-									+goodsNumber+"*"
+									+"        "+goodsNumber+"        "
 									+resultSet.getInt("price")+"\n");
 						}
 						else {
@@ -88,6 +87,7 @@ public class Cashier {
 	}
 
 	public void print() {
+		System.out.println("商品名 商品数量 商品价格");
 		System.out.println(stringBuffer);
 		System.out.println("================================================");
 		System.out.println("totalMoney:"+totalMoney);
