@@ -5,7 +5,7 @@ public class SQLConnect {
 	private static String JDBC = "com.mysql.cj.jdbc.Driver";
 	private static String userName = "root";
 	private static String password = "bqlniubi";
-	private static String url = "jdbc:mysql://localhost:3306/User"
+	private static String url = "jdbc:mysql://localhost:3306/internet_cafe"
 		+"?useSSL=false&&serverTimezone=UTC";
 	private static Connection connection;
 
