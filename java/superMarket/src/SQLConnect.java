@@ -3,9 +3,9 @@ import java.sql.*;
 public class SQLConnect {
 
 	private static String JDBC = "com.mysql.cj.jdbc.Driver";
-	private static String userName = "root";
-	private static String password = "bqlniubi";
-	private static String url = "jdbc:mysql://localhost:3306/User"
+	private static String userName = "root"; 	//mysql用户的用户名
+	private static String password = "123456"; 	//mysql用户的密码
+	private static String url = "jdbc:mysql://localhost:3306/User" //User是数据库的库名
 		+"?useSSL=false&&serverTimezone=UTC";
 	private static Connection connection;
 
