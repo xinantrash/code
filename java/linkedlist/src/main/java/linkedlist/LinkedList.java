@@ -58,14 +58,30 @@ public class LinkedList{
 		}
 	}
 
-	public void search(int number){
+	public void update(int number, String heroname, String nickname) {
 		HeroNode temp = head;
-		while( true ){
-			if( temp.next.number == number ){
+
+		while ( temp.next != null ) {
+			if ( temp.number == number ) {
+				temp.heroname = heroname;
+				temp.nickname = nickname;
+
+				return;
+			}
+			temp = temp.next;
+		}
+
+		System.out.println("The node is nonexistent.");
+	}
+
+	public void search(int number) {
+		HeroNode temp = head;
+		while( true ) {
+			if( temp.next.number == number ) {
 				System.out.println(temp.next);
 				break;
 			}
-			if( temp.next == null ){
+			if( temp.next == null ) {
 				System.out.println("The node is nonexistent.");
 				break;
 			}
@@ -73,14 +89,14 @@ public class LinkedList{
 		}
 	}
 
-	public void listList(){
+	public void list() {
 		//Determine if the linked list is empty
-		if( head.next == null ){
+		if( head.next == null ) {
 			System.out.println("Linkedlist is empty.");
 			return;
 		}
 		HeroNode temp = head.next;
-		while( temp != null ){
+		while( temp != null ) {
 			System.out.println(temp);
 			temp = temp.next;
 		}

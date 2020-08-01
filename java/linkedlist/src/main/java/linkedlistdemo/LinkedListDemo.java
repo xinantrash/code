@@ -19,7 +19,7 @@ public class LinkedListDemo{
 		singlelinkedlist.add(heroNode_2);
 		singlelinkedlist.add(heroNode_4);
 
-		singlelinkedlist.listList();
+		singlelinkedlist.list();
 		System.out.println();
 		singlelinkedlist.delete(heroNode_2);
 
@@ -28,7 +28,7 @@ public class LinkedListDemo{
         // singlelinkedlist.addByOrder(heroNode_2);
 		// singlelinkedlist.addByOrder(heroNode_4);
 
-		singlelinkedlist.listList();
+		singlelinkedlist.list();
 		System.out.println();
 		singlelinkedlist.search(3);
 	}

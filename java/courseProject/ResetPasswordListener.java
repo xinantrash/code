@@ -11,6 +11,8 @@ public class ResetPasswordListener implements ActionListener {
 	private JPasswordField passwordField;
 	private JPasswordField passwordResetField;
 
+	private JFrame resetPasswordWindow;
+
 	private Connection connection;
 
 	public void setEmailField(JTextField emailField) {
@@ -27,6 +29,10 @@ public class ResetPasswordListener implements ActionListener {
 
 	public void setPasswordResetField(JPasswordField passwordResetField) {
 		this.passwordResetField = passwordResetField;
+	}
+
+	public void setResetPasswordWindow(JFrame resetPasswordWindow) {
+		this.resetPasswordWindow = resetPasswordWindow;
 	}
 
 	public void actionPerformed(ActionEvent event) {
@@ -56,6 +62,7 @@ public class ResetPasswordListener implements ActionListener {
 
 	public void resetSuccess() {
 		JOptionPane.showMessageDialog(null, "修改成功", "Tips", JOptionPane.INFORMATION_MESSAGE);
+		resetPasswordWindow.dispose();
 	}
 
 	public void resetFail() {

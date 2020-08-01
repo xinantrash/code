@@ -74,6 +74,7 @@ public class ResetPassword  {
 		jFrame.add(jPanel);
 		jFrame.setVisible(true);
 		jFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		listener.setResetPasswordWindow(jFrame);
 	}
 
 	public static void main(String[] args) {

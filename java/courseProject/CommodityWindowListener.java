@@ -11,6 +11,7 @@ public class CommodityWindowListener implements ActionListener {
 
 	private Connection connection;
 	private Statement statement;
+	private Statement insertStatement;
 	private ResultSet resultSet;
 
 	private StringBuffer commodityBuffer;
@@ -63,6 +64,7 @@ public class CommodityWindowListener implements ActionListener {
 
 		try {
 			statement = connection.createStatement();
+			insertStatement = connection.createStatement();
 			resultSet = statement.executeQuery(sqlSelect);
 			
 			// search commodity from mysql
@@ -80,6 +82,14 @@ public class CommodityWindowListener implements ActionListener {
 
 						// update the database
 						updateCommodity(commodityAmount, nums, commodityInput);
+
+						String sqlInsert = "insert into sale"
+							+" (number, name, price, amount) "
+							+"values ('"+resultSet.getString("number")
+							+"', '"+resultSet.getString("name")
+							+"', '"+resultSet.getInt("price")
+							+"', '"+nums+"')";
+						insertStatement.executeUpdate(sqlInsert);
 
 						// a window to remind the customer
 						purchaseSuccess();

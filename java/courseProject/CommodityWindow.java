@@ -12,6 +12,7 @@ public class CommodityWindow {
 	private JLabel commodityFieldLabel;
 	private JLabel commodityNumsLabel;
 	private Font font;
+	private JScrollPane jScrollPane;
 	private CommodityWindowListener listener;
 	private WindowExitListener exitListener = new WindowExitListener();
 	
@@ -31,7 +32,10 @@ public class CommodityWindow {
 		commodityArea.setFont(font);
 		commodityArea.setBounds(60, 80, 200, 300);
 		commodityArea.setEditable(false);
-		panel.add(commodityArea);
+		jScrollPane = new JScrollPane(commodityArea);
+		jScrollPane.setBounds(60, 80, 200, 100);
+// 		panel.add(commodityArea);
+		panel.add(jScrollPane);
 
 		commodityFieldLabel = new JLabel("请输入商品代码,如\"1001\"");
 		commodityFieldLabel.setBounds(380, 60, 160, 80);
