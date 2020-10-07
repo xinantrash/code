@@ -16,7 +16,8 @@ typedef struct {
 
 stack *ini_stack() {
 	stack *S = (stack *)malloc(sizeof(stack));
-	S->base = S->top = (node *)malloc(sizeof(node));
+	S->base = (node *)malloc(sizeof(node));
+	S->top = (node *)malloc(sizeof(node));
 	S->length = 0;
 
 	return S;
@@ -42,7 +43,7 @@ void push(stack *S, int value) {
 	new_node->value = value;
 
 	temp->next = new_node;
-	S->top = new_node;
+	S->top->next = new_node;
 	S->length++;
 }
 
@@ -51,9 +52,16 @@ void pop(stack *S) {
 		cout << "error ";
 	}
 	else {
-		node *temp = S->top->next;
-		S->top->next = temp->next;
-		free(temp);
+		node *delete_node = S->top->next;
+		cout << delete_node->value << " ";
+		node *temp = S->base;
+		while ( temp->next->next != NULL ) {
+			temp = temp->next;
+		}
+		temp->next = delete_node->next;
+		S->top->next = temp;
+		free(delete_node);
+		S->length--;
 	}
 }
 
@@ -72,11 +80,23 @@ int stack_length(stack *S) {
 
 int main(int argc, const char *argv[]) {
 	stack *S = ini_stack();
-	push(S, 1);
-	push(S, 2);
-	push(S, 3);
+	while ( 1 ) {
+		int flag;
+		cin >> flag;
+		if ( flag == 1 ) {
+			int value;
+			cin >> value;
+			push(S, value);
+		}
+		else if ( flag == 0 ) {
+			pop(S);
+		}
+		else {
+			break;
+		}
+	}
 
-	show_stack(S);
+// 	show_stack(S);
 
 	return 0;
 }
