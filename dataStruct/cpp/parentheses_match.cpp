@@ -1,10 +1,11 @@
-#include <cstdlib>
 #include <iostream>
+#include <cstdlib>
+#include <string>
 
 using namespace std;
 
 typedef struct list_node {
-	int value;
+	char data;
 	struct list_node *next;
 }node;
 
@@ -32,7 +33,7 @@ bool empty(stack *S) {
 	}
 }
 
-void push(stack *S, int value) {
+void push(stack *S, char data) {
 	node *temp = S->base;
 
 	while ( temp->next != NULL ) {
@@ -40,20 +41,21 @@ void push(stack *S, int value) {
 	}
 
 	node *new_node = (node *)malloc(sizeof(node));
-	new_node->value = value;
+	new_node->data = data;
 
 	temp->next = new_node;
 	S->top->next = new_node;
 	S->length++;
 }
 
-void pop(stack *S) {
+char pop(stack *S) {
+	char data;
 	if ( empty(S) ) {
-		cout << "error ";
+		return ' ';
 	}
 	else {
 		node *delete_node = S->top->next;
-		cout << delete_node->value << " ";
+		data = delete_node->data;
 		node *temp = S->base;
 		while ( temp->next->next != NULL ) {
 			temp = temp->next;
@@ -63,38 +65,45 @@ void pop(stack *S) {
 		free(delete_node);
 		S->length--;
 	}
-}
-
-void show_stack(stack *S) {
-	node *temp = S->base;
-
-	while ( temp->next != NULL ) {
-		cout << temp->next->value << " ";
-		temp = temp->next;
-	}
-}
-
-int stack_length(stack *S) {
-	return S->length;
+	return data;
 }
 
 int main(int argc, const char *argv[]) {
 	stack *S = ini_stack();
+	string s;
+	cin >> s;
+	int n = s.length();
 
-	int nums;
-	cin >> nums;
-
-	for ( int i=0; i<nums; i++ ) {
-		int temp;
-		cin >> temp;
-		push(S, temp);
+	for ( int i=0; i<n; i++ ) {
+		if ( s[i] == '(' ) {
+			push(S, s[i]);
+		}
+		else if ( s[i] == ')' ) {
+			char temp = pop(S);
+			if ( temp != '(' ) {
+				push(S, temp);
+			}
+		}
+		else if ( s[i] == '[' ) {
+			push(S, s[i]);
+		}
+		else if ( s[i] == ']' ) {
+			char temp = pop(S);
+			if ( temp != '[' ){
+				push(S, temp);
+			}
+		}
+		else {
+			continue;
+		}
 	}
-	
-	while ( !empty(S) ) {
-		pop(S);
-	}
 
-// 	show_stack(S);
+	if ( S->length == 0 ) {
+		cout << "ok";
+	}
+	else {
+		cout << "error";
+	}
 
 	return 0;
 }
